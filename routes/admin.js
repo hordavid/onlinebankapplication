@@ -16,7 +16,7 @@ router.route("/admin/signup")
     badRequestMessage:  "Kérjük töltse ki a mezőket."
 }));
 
-router.route("/admin/users").get(/*funcs.ensureAuthenticated, funcs.andRestrictTo("admin"),*/ function(req, res) { 
+router.route("/admin/users").get(funcs.ensureAuthenticated, funcs.andRestrictTo("admin"), function(req, res) { 
     req.app.models.user.find().then(function(users) {
         res.render("user/users", {
             users: users,
