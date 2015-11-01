@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-primary" href="/">Online Bank</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-search"></span><span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/admin/users">Ügyfelek</a></li>
+                        <li><a href="/admin/accounts">Számlák</a></li>
+                        <li><a href="/admin/histories">Számlatörténetek</a></li>
+                    </ul>
+                </li>
+                {{#if loggedIn}}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Számla hozzáadás<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/account/addmaster"><span class="glyphicon glyphicon-plus"></span> Fő számla hozzáadása</a></li>
+                        <li><a href="/account/create"><span class="glyphicon glyphicon-plus"></span> Virtuális számla hozzáadása</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Számlák<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/account/accounts"><span class="glyphicon glyphicon-list-alt"></span> Számlák kezelése</a></li>
+                        <li><a href="/account/balance"><span class="glyphicon glyphicon-eur"></span> Egyenleg</a></li>
+                        <li><a href="/history/histories"><span class="glyphicon glyphicon-th-list"></span> Számlatörténet</a></li>
+                    </ul>
+                </li>
+                <li><a href="/account/transfer"><span class="glyphicon glyphicon-transfer"></span> Átutalás</a></li>
+                {{/if}}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {{#if loggedIn}}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{user.firstname}} {{user.lastname}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/user/profile"><span class="glyphicon glyphicon-cog"></span> Adatlap</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-toggle="modal" data-target="#logout"><span class="glyphicon glyphicon-log-out"></span> Kilépés</a></li>
+                    </ul>
+                </li>
+                <li><span class="label label-default"></span></li>
+                {{else}}
+                <li><a href="/auth/signup">Regisztráció</a></li>
+                <li><a href="/auth/login"><!--<span class="glyphicon glyphicon-log-in"></span>-->Bejelentkezés</a></li>
+                {{/if}}
+                <!--<li><a href="/info"><span class="glyphicon glyphicon-info-sign"></span>Súgó</a></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- BEGIN MODAL LOG OUT DIALOG -->
+<div class="modal" id="logout">
+    <div class="modal-dialog">
+        <form class="form-horizontal" action="/auth/logout" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kijelentkezés</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Biztosan ki akar lépni?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Nem</button>
+                    <button type="submit" class="btn btn-success">Igen</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END MODAL LOG OUT DIALOG -->

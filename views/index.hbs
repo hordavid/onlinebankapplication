@@ -1,0 +1,18 @@
+<center>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+            <h1>Online Bank</h1>
+        </div>
+        <div class="jumbotron">
+            <p>Üdvözöljük az Online Bank rendszerében.</p>
+            {{#if loggedIn}}
+            <h3 class="text-primary">{{user.firstname}} {{user.lastname}}</h3>
+            {{else}}
+            <p>Ön még nem ügyfelünk, ingyenesen regisztrálhat ezen a <a href="/auth/signup">linken.</a></p>
+            <p>Ellenkező esetben lépjen be a funkciók eléréséhez</p>
+            {{/if}}
+        </div>
+    </div>
+</div>    
+</center>

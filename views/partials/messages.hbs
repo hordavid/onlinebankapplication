@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        {{#each msg.error as |error|}}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{error}}
+        </div>
+        {{/each}}
+        {{#each msg.info as |info|}}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{info}}
+        </div>
+        {{/each}}
+        {{#each msg.success as |success|}}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{success}}
+        </div>
+        {{/each}}
+        {{#each msg.warning as |warning|}}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{warning}}
+        </div>
+        {{/each}}
+    </div>
+</div>

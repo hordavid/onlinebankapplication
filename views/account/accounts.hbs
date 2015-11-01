@@ -1,0 +1,41 @@
+{{#if accounts}}
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Számla típusa</th>
+            <th>Számlaszám</th>
+            <th>Egyenleg</th>
+            <th>Pénznem</th>
+            <th>Opciók</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each accounts as |account|}}
+        <tr  class="text-{{#if account.active}}default{{else}}warning{{/if}}">
+            <td>{{#if account.master}}Fő számla{{else}}Virtuális{{/if}}</td>
+            <td>{{account.number}}</td>
+            <td>{{account.balance}}</td>
+            <td><span class="badge">{{account.currency}}</span></td>
+            <td>
+                <a class="btn btn-sm btn-{{#unless account.active}}success{{else}}warning{{/unless}}" href="/account/active/{{account.id}}">
+                    <span class="glyphicon glyphicon-{{#unless account.active}}ok{{else}}ban{{/unless}}-circle"></span>
+                </a>
+                <a class="btn btn-sm btn-danger" href="/account/delete/{{account.id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Információ</h3>
+    </div>
+    <div class="panel-body">
+        Nincsenek megjeleníthető számlák.
+    </div>
+</div>
+{{/if}}
+<a href="/" class="btn btn-primary">Vissza</a>
