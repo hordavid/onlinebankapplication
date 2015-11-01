@@ -11,7 +11,7 @@ orm.loadCollection(require(__dirname + "/models/account"));
 orm.loadCollection(require(__dirname + "/models/history"));
 
 orm.initialize(waterlineConfig, function(err, models) { 
-    if(err) throw err;
+    if(err) console.log(err);
     app.models = models.collections;
     
     app.listen(config.port, function () {
